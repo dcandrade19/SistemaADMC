@@ -78,5 +78,31 @@ class usuario {
         $this->dbh->exec("DELETE FROM usuarios WHERE id = $this->id");
         $this->id = 0; // Remover referência
     }
+    
+    static function getAll(){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT * FROM usuarios");
+        $usrArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($usrArray as $row) {
+            $usuario = new usuario();
+            $usuario->read($row[id]);
+            $retorno[$x] = $usuario;
+            $x++;
+        }
+        return $retorno;
+    }
+    
+    static function search($keyword = ""){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM usuarios WHERE login LIKE '%$keyword%' LIMIT 1");
+        if ($result->num_rows > 0) {
+        $found = $result->fetchAll(PDO::FETCH_ASSOC);
+            $usuario = new usuario();
+            $usuario->read($found[id]);
+            $retorno = $usuario;
+        }
+        return $retorno;
+    }
 }
 ?>
