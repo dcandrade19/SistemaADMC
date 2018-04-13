@@ -14,7 +14,7 @@
 	}
 
 	if(!defined('BASEURL')){
-		define('BASEURL', '/SistemaADMC/');
+		define('BASEURL', '/sistemaadmc/');
 	}
 
 	if(!defined('DBAPI')){

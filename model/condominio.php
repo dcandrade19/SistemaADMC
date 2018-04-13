@@ -68,5 +68,35 @@ class condominio {
         $this->dbh->exec("DELETE FROM condominios WHERE id = $this->id");
         $this->id = 0; // Remover referência
     }
+    
+    
+    static function getAll($status = 1){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM condominios WHERE status = $status ORDER BY id DESC");
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $condominio = new condominio();
+            $condominio->read($row[id]);
+            $retorno[$x] = $condominio;
+            $x++;
+        }
+        return $retorno;
+    }
+    
+    static function search($keyword = "", $status = 1){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM condominios WHERE status = $status AND nome LIKE '%$keyword%' ORDER BY id DESC");
+        
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $condominio = new condominio();
+            $condominio->read($row[id]);
+            $retorno[$x] = $condominio;
+            $x++;
+        }
+        return $retorno;
+    }
 }
 ?>
