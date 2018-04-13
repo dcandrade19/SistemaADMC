@@ -6,7 +6,7 @@ class bloco {
     private $id = 0;
     private $nome = '';
     private $status = '';
-    private $id_condominio = 0;
+    private $id_condominio = '';
     private $dbh = '';
     
     function __construct(){
@@ -67,6 +67,35 @@ class bloco {
     function delete(){
         $this->dbh->exec("DELETE FROM blocos WHERE id = $this->id");
         $this->id = 0; // Remover referência
+    }
+    
+    static function getAll($status = 1){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM blocos WHERE status = $status ORDER BY id DESC");
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $bloco = new bloco();
+            $bloco->read($row[id]);
+            $retorno[$x] = $bloco;
+            $x++;
+        }
+        return $retorno;
+    }
+    
+    static function search($keyword = "", $status = 1){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM blocos WHERE status = $status AND nome LIKE '%$keyword%' ORDER BY id DESC");
+        
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $bloco = new bloco();
+            $bloco->read($row[id]);
+            $retorno[$x] = $bloco;
+            $x++;
+        }
+        return $retorno;
     }
 }
 ?>

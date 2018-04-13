@@ -8,11 +8,11 @@
 
 	<link rel="stylesheet" href="<?php echo BASEURL;?>_support/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo BASEURL;?>css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -20,7 +20,7 @@
     <a class="navbar-brand" href="<?php echo BASEURL;?>view/menu.php"></i>Sistema ADMC</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     </ul>
-   <a type="button" href="<?php echo BASEURL;?>index.php" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i></a>
+   <a type="button" href="<?php echo BASEURL;?>index.php" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i></a>
 </nav>
 
 

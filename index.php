@@ -16,7 +16,7 @@
       Lembre-se de mim
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Entrar</button>
+  <button type="submit" class="btn btn-secondary">Entrar</button>
 </form>
 </div>
 <?php include 'view/footer.php';?>
