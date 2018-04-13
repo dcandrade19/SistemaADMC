@@ -5,6 +5,7 @@
 <?php include_once '../model/bloco.php';?>
 
 <?php 
+
 $controller = $_GET[controller];
 if(!$controller) $controller = 'condominios';
 
@@ -26,19 +27,7 @@ if($controller =='condominios'){
 <input id="controller" type="hidden" name="controller" value="<?php echo $controller ?>">
 <input id="action" type="hidden" name="action" value="filtrar">
  
-<div class="btn-group btn-group-toggle">
 
-    <a href="?controller=condominios" class="btn btn-outline-dark btn-sm" >Condominios</a>
-    <a href="?controller=blocos" class="btn btn-outline-dark btn-sm">Blocos</a>
-    <a href="?controller=apartamentos" class="btn btn-outline-dark btn-sm">Apartamentos</a>
-    <a href="?controller=moradores" class="btn btn-outline-dark btn-sm">Moradores</a>
-    <a href="?controller=funcionarios" class="btn btn-outline-dark btn-sm">Funcionarios</a>
-    <a href="?controller=avisos" class="btn btn-outline-dark btn-sm">Avisos</a>
-    <a href="?controller=servicos" class="btn btn-outline-dark btn-sm">Serviços</a>
-    <a href="?controller=despesas" class="btn btn-outline-dark btn-sm">Despesas</a>
-    <a href="?controller=funcoes" class="btn btn-outline-dark btn-sm">Funções</a>
-
-</div>
 
 <hr>
 
