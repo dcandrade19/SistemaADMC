@@ -39,7 +39,7 @@ if($_POST[action]=="createupdate"){
     $id = $condominioEdicao->getId();
 }
 
-if($_POST[action]=='filtrar' && $_POST[filtro] != ''){
+if($_POST[action]=='filtrar'){
     $condominios = condominio::search($_POST[filtro]);
     $qtd = sizeof($condominios);
     if ($qtd == 0) {
@@ -60,10 +60,13 @@ if($_POST[action]=='filtrar' && $_POST[filtro] != ''){
 }else{
     $condominios = condominio::getAll();
     $qtd = sizeof($condominios);
-    $res = '
-    <div class="alert alert-dark fade show" role="alert">
+    if(empty($res)) {
+        $res = '
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
     Exibindo <strong>'.$qtd.'</strong> registros.
     </div>';
+    }
+    
 }
 
 if(sizeof($condominios)){
