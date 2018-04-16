@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php session_start();?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@
 </header>
 
 </body>
-=======
+
 <?php session_start();?>
 <!DOCTYPE html>
 <html>
@@ -116,5 +116,5 @@
 </header>
 
 </body>
->>>>>>> 383c10ba9d48ad89772a8dd6c1115cb2aaa3efe1
+ 
 </html>

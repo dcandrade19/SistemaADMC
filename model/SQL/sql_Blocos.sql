@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 create table if not exists blocos(
 	id int(11) not null AUTO_INCREMENT,
     nome varchar(255) not null,
@@ -7,7 +7,7 @@ create table if not exists blocos(
     
     PRIMARY KEY(id),
     FOREIGN KEY (id_condominio) REFERENCES condominios(id)
-=======
+
 create table if not exists blocos(
 	id int(11) not null AUTO_INCREMENT,
     nome varchar(255) not null,
@@ -16,5 +16,5 @@ create table if not exists blocos(
     
     PRIMARY KEY(id),
     FOREIGN KEY (id_condominio) REFERENCES condominios(id)
->>>>>>> 383c10ba9d48ad89772a8dd6c1115cb2aaa3efe1
+ 
 );
