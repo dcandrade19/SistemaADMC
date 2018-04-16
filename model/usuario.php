@@ -61,12 +61,14 @@ class usuario {
     
     function read($id){
         $result = $this->dbh->query("SELECT * FROM usuarios WHERE id = $id");
-        $usrArray = $result->fetchAll(PDO::FETCH_ASSOC);
-        $this->setId($usrArray[0]['id']);
-        $this->setLogin($usrArray[0]['login']);
-        $this->setSenha($usrArray[0]['senha']);
-        $this->setStatus($usrArray[0]['status']);
-        $this->setNivel($usrArray[0]['nivel']);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $this->setId($row['id']);
+            $this->setLogin($row['login']);
+            $this->setSenha($row['senha']);
+            $this->setStatus($row['status']);
+            $this->setNivel($row['nivel']);
+        }     
     }
     
     function update(){
@@ -95,12 +97,16 @@ class usuario {
     
     static function search($keyword = ""){
         $dbh = dataBase::getHandler();
-        $result = $dbh->query("SELECT id FROM usuarios WHERE login LIKE '%$keyword%' LIMIT 1");
-        if ($result->num_rows > 0) {
+        $retorno = null;
+        $result = $dbh->query("SELECT * FROM usuarios WHERE login = '$keyword' LIMIT 1");
+        $n = count($result);
+        if ($n > 0) {
         $found = $result->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($found as $row) {
             $usuario = new usuario();
-            $usuario->read($found[id]);
+            $usuario->read($row['id']);
             $retorno = $usuario;
+        }
         }
         return $retorno;
     }
