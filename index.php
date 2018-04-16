@@ -1,6 +1,6 @@
 <?php error_reporting(0);?>
 <?php require_once 'config.php';?>
-<?php include 'view/header.php';?>
+<?php include (HEADER_TEMPLATE)?>
 <?php
 	//error_reporting(0); // para o caso de server gratuito.
 ?>
@@ -50,4 +50,4 @@
 ?>
 <?php include ('view/modal_' .$controller .'.php');?>
 <?php include 'view/modal_confirmar.php';?>
-<?php include 'view/footer.php';?>
+<?php include (FOOTER_TEMPLATE)?>
