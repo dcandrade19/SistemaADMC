@@ -11,21 +11,36 @@
   <div class="row ">  
     <div class="form-group col-md-4">
       <label for="name">Numero: </label>
-      <input type="number" class="form-control" name="numero" value="<?=$numero?>" required>
+      <input type="number" class="form-control" name="numero" value="<?=$numero?>" min="1" required>
     </div>
 
+  <div class="form-group col-md-2">
+        <label for="campo2">Status: </label>
+        <select class="custom-select" name="status" value="<?=$status?>">
+          <option value="1">Ativado</option>
+          <option value="0">Desativado</option>
+        </select>
+      </div>
+  </div>
+
+
+
+  <div class="row ">  
     <div class="form-group col-md-6">
-      <label for="campo2">Bloco: </label>
-      <input type="text" class="form-control" name="id_bloco" value="<?=$id_bloco?>" required>
+      <label for="condominio">Condomínio: </label>
+        <?php echo apartamento::doSelectCondominio();?>
     </div>
 
-    <div class="form-group col-md-2">
-      <label for="campo2">Status: </label>
-      <select class="custom-select" name="status" value="<?=$status?>">
-        <option value="1">Ativado</option>
-        <option value="0">Desativado</option>
+
+    <div class="form-group col-md-6"> 
+      <label for="bloco">Bloco</label>
+      <div id="bloco">
+      <select disabled class="form-control">
+      <option selected >Nenhum condominio selecionado!</option>
       </select>
     </div>
+
+    
   </div>
   	<input type="hidden" name="id" value="<?=$id?>">
 	<input type="hidden" name="controller" value="apartamentos">
@@ -40,3 +55,18 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+function fetch_select(val){
+         $.ajax({
+             type: 'post',
+             url: 'view/fetch_data.php',
+             data: {
+              id_condominio: val
+             },
+             success: function (response) {
+                document.getElementById("bloco").innerHTML=response;
+             }
+         });
+}
+</script>

@@ -16,7 +16,8 @@
 
     <div class="form-group col-md-6">
       <label for="campo2">Condominio: </label>
-      <input type="number" class="form-control" name="id_condominio" value="<?=$id_condominio?>" required>
+      <?php echo bloco::doSelect();?>
+      <!-- <input type="number" class="form-control" name="id_condominio" value="<?=$id_condominio?>" required> -->
     </div>
 
     <div class="form-group col-md-2">

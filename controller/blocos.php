@@ -93,7 +93,7 @@ if(sizeof($blocos)){
             <tbody>
             <tr><th scope="row">'.$bloco->getId().'</th>
             <td>'.$bloco->getNome().'</td>
-            <td>'.$bloco->getId_condominio().'</td>
+            <td>'.$bloco->getNomeCondominio($bloco->getId_condominio()).'</td>
             <td>'.$bloco->getStatus().'</td>
             <td><a class="icone view" href="?controller=blocos&action=view&id='.
             $bloco->getId().'"title="Editar"><i class="fas fa-eye"></i></a>
@@ -118,7 +118,7 @@ if(sizeof($blocos)){
             $bloco->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=blocos&action=delete&id=".
             $bloco->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
-        
+            
     }
 }
 

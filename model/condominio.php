@@ -41,7 +41,11 @@ class condominio {
     }
     
     function getStatus(){
-        return $this->status;
+        if($this->status){
+            return 'Ativado';
+        }else{
+            return 'Desativado';
+        }
     }
     
     function create(){

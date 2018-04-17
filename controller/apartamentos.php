@@ -56,7 +56,7 @@ if($_POST[action]=='filtrar'){
         $texto = 'apartamento encontrado!!!';
     }else {
         $texto = 'apartamentos encontrados!!!';
-    }    
+    }
     $res = '
     <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>'.$qtd.'</strong> '.$texto. '
@@ -93,7 +93,7 @@ if(sizeof($apartamentos)){
             <tbody>
             <tr><th scope="row">'.$apartamento->getId().'</th>
             <td>'.$apartamento->getNumero().'</td>
-            <td>'.$apartamento->getId_bloco().'</td>
+            <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
             <td>'.$apartamento->getStatus().'</td>
             <td><a class="icone view" href="?controller=apartamentos&action=view&id='.
             $apartamento->getId().'"title="Editar"><i class="fas fa-eye"></i></a>
@@ -103,8 +103,8 @@ if(sizeof($apartamentos)){
             $apartamento->getId().'"title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
             </tbody>';
-                  
-  }
+            
+    }
     $tb = $tb_head .$tb_content .$tb_end;
 }
 
@@ -118,7 +118,7 @@ if(sizeof($apartamentos)){
             $apartamento->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=apartamentos&action=delete&id=".
             $apartamento->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
-        
+            
     }
 }
 

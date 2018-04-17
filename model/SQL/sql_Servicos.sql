@@ -6,7 +6,7 @@ create table if not exists servicos(
     id_solicitante int,
     
     PRIMARY KEY(id),
-    FOREIGN KEY (id_despesa) REFERENCES despesas(id)
+    FOREIGN KEY (id_despesa) REFERENCES despesas(id),
     FOREIGN KEY (id_solicitante) REFERENCES moradores(id)
  
 );

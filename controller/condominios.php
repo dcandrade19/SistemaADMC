@@ -56,7 +56,7 @@ if($_POST[action]=='filtrar'){
         $texto = 'condominio encontrado!!!';
     }else {
         $texto = 'condominios encontrados!!!';
-    }    
+    }
     $res = '
     <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>'.$qtd.'</strong> '.$texto. '
@@ -96,15 +96,15 @@ if(sizeof($condominios)){
             <td>'.$condominio->getEndereco().'</td>
             <td>'.$condominio->getStatus().'</td>
             <td><a class="icone view" href="?controller=condominios&action=view&id='.
-            $condominio->getId().'"title="Editar"><i class="fas fa-eye"></i></a>
+            $condominio->getId().'"title="Visualizar"><i class="fas fa-eye"></i></a>
             <a class="icone edit" href="?controller=condominios&action=edit&id='.
             $condominio->getId().'"title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=condominios&action=delete&id='.
             $condominio->getId().'"title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
             </tbody>';
-                  
-  }
+            
+    }
     $tb = $tb_head .$tb_content .$tb_end;
 }
 
@@ -118,7 +118,7 @@ if(sizeof($condominios)){
             $condominio->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=condominios&action=delete&id=".
             $condominio->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
-        
+            
     }
 }
 
