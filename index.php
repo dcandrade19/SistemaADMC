@@ -10,6 +10,7 @@
 	include_once "./model/usuario.php";
 	include_once "./model/bloco.php";
 	include_once "./model/apartamento.php";
+	//include_once "./model/apartamento.php";
 
 	if($_GET['action']=='sair'){
 	    $_SESSION = '';
