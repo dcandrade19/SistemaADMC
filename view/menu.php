@@ -4,11 +4,11 @@
 <div class="busca form-inline">
 	<input type="hidden" name="controller" value="<?php $controller?>">
 	<input type="hidden" name="action" value="filtrar">
-	<button class="btn btn-secondary my-2 my-sm-0 btn-atualizar" type="submit">Atualizar</button>
+	<button class="btn btn-secondary my-2 my-sm-0 btn-atualizar" type="submit"><i class="fas fa-sync-alt"></i> Atualizar</button>
 	<div>
 
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" name="filtro" onchange="this.form.submit()" aria-label="Search">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Buscar</button>
     </div>
  </div>
 
