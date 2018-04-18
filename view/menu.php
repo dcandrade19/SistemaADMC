@@ -24,19 +24,34 @@
   </div>  
 
 	<?=$tb?>
-		
+	
   </form>
   </div>
 
   <script>
 $(document).ready(function(){
+
+	$('#cpf').mask('000.000.000-00');
+
+	 $('[data-toggle="tooltip"]').tooltip();   
     $("#btn-novo").click(function(){	
         $("#modal_<?php echo $controller?>").modal();       
     });
     $('.modal').on('hidden.bs.modal', function() {
         $(this).find('input').val('');
       });
-   
+
+    
+    function openCity(cityName) {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";  
+        }
+        document.getElementById(cityName).style.display = "block";  
+    }
+  
+    
 });
 </script>
  	</div> 

@@ -72,6 +72,7 @@ class apartamento {
         $this->setNumero($usrArray[0]['numero']);
         $this->setId_bloco($usrArray[0]['id_bloco']);
         $this->setStatus($usrArray[0]['status']);
+
     }
     
     function update(){
@@ -145,7 +146,7 @@ class apartamento {
     }
     
     static function doSelectBloco($id){
-        $select = '<select required name="id_bloco" class="form-control" required>';
+        $select = '<select required name="id_bloco" class="form-control" required onChange="fetch_select_apt(this.value);">';
         
         $blocos = apartamento::getBlocoPorId($id);
         if($blocos){

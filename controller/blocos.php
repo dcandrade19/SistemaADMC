@@ -96,28 +96,28 @@ if(sizeof($blocos)){
             <td>'.$bloco->getNomeCondominio($bloco->getId_condominio()).'</td>
             <td>'.$bloco->getStatus().'</td>
             <td><a class="icone view" href="?controller=blocos&action=view&id='.
-            $bloco->getId().'"title="Editar"><i class="fas fa-eye"></i></a>
+            $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
             <a class="icone edit" href="?controller=blocos&action=edit&id='.
-            $bloco->getId().'"title="Editar"><i class="fas fa-edit"></i></a>
+            $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=blocos&action=delete&id='.
-            $bloco->getId().'"title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
+            $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
             </tbody>';
             
     }
-    $tb = $tb_head .$tb_content .$tb_end;
+    $cond = $tb_head .$tb_content .$tb_end;
 }
 
 if(sizeof($blocos)){
     foreach ($blocos as $bloco) {
-        $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-th-large fa-3x'></i> <p>".
+        $tb .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-th-large fa-3x'></i> <p>".
             $bloco->getNome().
             "</p> <div class='mi-btn'> <a class='icone view' href='?controller=blocos&action=view&id=".
-            $bloco->getId()."'title='Detalhes'><i class='fas fa-eye'></i></a>".
+            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
             "<a class='icone edit' href='?controller=blocos&action=edit&id=".
-            $bloco->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
+            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=blocos&action=delete&id=".
-            $bloco->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
             
     }
 }

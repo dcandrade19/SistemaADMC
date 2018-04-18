@@ -35,7 +35,7 @@
       </div>
       <div class="modal-footer">   
         <button type="button" data-dismiss="modal" class="btn btn-light">Cancelar</button>
-        <input type="submit" name="enviar" class="btn btn-info" value="Salvar"></input>
+       <button type="submit" name="enviar" class="btn btn-info">Salvar</button>
       </div>
      </form>
     </div>

@@ -96,11 +96,11 @@ if(sizeof($apartamentos)){
             <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
             <td>'.$apartamento->getStatus().'</td>
             <td><a class="icone view" href="?controller=apartamentos&action=view&id='.
-            $apartamento->getId().'"title="Editar"><i class="fas fa-eye"></i></a>
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
             <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
-            $apartamento->getId().'"title="Editar"><i class="fas fa-edit"></i></a>
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=apartamentos&action=delete&id='.
-            $apartamento->getId().'"title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
             </tbody>';
             
@@ -113,11 +113,11 @@ if(sizeof($apartamentos)){
         $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-key fa-3x'></i> <p>".
             $apartamento->getNumero().
             "</p> <div class='mi-btn'> <a class='icone view' href='?controller=apartamentos&action=view&id=".
-            $apartamento->getId()."'title='Detalhes'><i class='fas fa-eye'></i></a>".
+            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
             "<a class='icone edit' href='?controller=apartamentos&action=edit&id=".
-            $apartamento->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
+            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=apartamentos&action=delete&id=".
-            $apartamento->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
             
     }
 }

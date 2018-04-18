@@ -46,6 +46,123 @@ if($_POST['action']=="createupdate"){
         $("#modal_condominios").modal();
         });
           </script>';
+}elseif($_GET[action]=='view'){
+    $condominio = new condominio();
+    $condominio->read($_GET[id]);
+    $nome = $condominio->getNome();
+    $status = $condominio->getStatus();
+    $endereco = $condominio->getEndereco();
+    $id = $condominio->getId();
+    $qtd_apt = 0;
+    $qtd_mor = 0;
+    $btns = '<a class="icone edit" href="?controller=condominios&action=edit&id='.
+            $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
+            <a class="icone del" href="?controller=condominios&action=delete&id='.
+            $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a>';
+    $blocos = apartamento::getBlocoPorId($id);
+    $apartamentos_lista = array();
+    $moradores_lista = array();
+    foreach ($blocos as $bloco) {
+       $apartamentos = morador::getApartamentoPorId($bloco->getId());
+       foreach ($apartamentos as $apartamento) {
+           array_push($apartamentos_lista, $apartamento);
+           $qtd_apt++;
+       }
+       
+    }
+    foreach ($apartamentos_lista as $apartamento) {  
+       $moradores = morador::getMoradoresPorId($apartamento->getId()); 
+       foreach ($moradores as $morador) {
+           array_push($moradores_lista, $morador);
+           $qtd_mor++;
+       }
+       
+    }
+
+    if(sizeof($blocos)){
+        foreach ($blocos as $bloco) {
+            $blocos_lista .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-th-large fa-3x'></i> <p>".
+                $bloco->getNome().
+                "</p> <div class='mi-btn'> <a class='icone view' href='?controller=blocos&action=view&id=".
+                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
+                "<a class='icone edit' href='?controller=blocos&action=edit&id=".
+                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
+                "<a class='icone del' href='?controller=blocos&action=delete&id=".
+                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+                
+        }
+    }
+    
+   if(sizeof($apartamentos_lista)){
+        $tb_h = '<table class="table">
+            <thead>
+            <tr id="tr-head">
+            <th scope="col">#</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Bloco</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opções</th>
+            </tr>
+            ';
+        $tb_e = '</table>';
+        foreach ($apartamentos_lista as $apartamento) {
+            $tb_c .= '</thead>
+            <tbody>
+            <tr><th scope="row">'.$apartamento->getId().'</th>
+            <td>'.$apartamento->getNumero().'</td>
+            <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
+            <td>'.$apartamento->getStatus().'</td>
+            <td><a class="icone view" href="?controller=apartamentos&action=view&id='.
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
+            <a class="icone del" href="?controller=apartamentos&action=delete&id='.
+            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
+            </tr>
+            </tbody>';
+            
+        }
+        $tabela_apartamentos = $tb_h .$tb_c .$tb_e;
+    }
+   
+    if(sizeof($moradores_lista)){
+        $tb_he = '<table class="table">
+            <thead>
+            <tr id="tr-head">
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cpf</th>
+            <th scope="col">Apartamento</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opções</th>
+            </tr>
+            ';
+        $tb_en = '</table>';
+        foreach ($moradores_lista as $morador) {
+            $tb_co .= '</thead>
+            <tbody>
+            <tr><th scope="row">'.$morador->getId().'</th>
+            <td>'.$morador->getNome().'</td>
+            <td>'.$morador->getCpf().'</td>
+            <td>'.$morador->getNumeroApartamento($morador->getId_apartamento()).'</td>
+            <td>'.$morador->getStatus().'</td>
+            <td><a class="icone view" href="?controller=moradores&action=view&id='.
+            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <a class="icone edit" href="?controller=moradores&action=edit&id='.
+            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
+            <a class="icone del" href="?controller=moradores&action=delete&id='.
+            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
+            </tr>
+            </tbody>';
+            
+        }
+        $tabela_moradores = $tb_he .$tb_co .$tb_en;
+    }
+    echo '<script>
+        $(document).ready(function(){
+        $("#modal_view_condominios").modal();
+        });
+          </script>';
 }
 
 if($_POST[action]=='filtrar'){
@@ -98,28 +215,28 @@ if(sizeof($condominios)){
             <td>'.$condominio->getEndereco().'</td>
             <td>'.$condominio->getStatus().'</td>
             <td><a class="icone view" href="?controller=condominios&action=view&id='.
-            $condominio->getId().'"title="Visualizar"><i class="fas fa-eye"></i></a>
+            $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Detalhes"><i class="fas fa-eye"></i></a>
             <a class="icone edit" href="?controller=condominios&action=edit&id='.
-            $condominio->getId().'"title="Editar"><i class="fas fa-edit"></i></a>
+            $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=condominios&action=delete&id='.
-            $condominio->getId().'"title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
+            $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
             </tbody>';
             
     }
-    $tb = $tb_head .$tb_content .$tb_end;
+    $cond = $tb_head .$tb_content .$tb_end;
 }
 
 if(sizeof($condominios)){
     foreach ($condominios as $condominio) {
-        $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='far fa-building fa-3x'></i> <p>".
+        $tb .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='far fa-building fa-3x'></i> <p>".
             $condominio->getNome().
             "</p> <div class='mi-btn'> <a class='icone view' href='?controller=condominios&action=view&id=".
-            $condominio->getId()."'title='Detalhes'><i class='fas fa-eye'></i></a>".
+            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
             "<a class='icone edit' href='?controller=condominios&action=edit&id=".
-            $condominio->getId()."'title='Editar'><i class='fas fa-edit'></i></a>".
+            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=condominios&action=delete&id=".
-            $condominio->getId()."'title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
             
     }
 }

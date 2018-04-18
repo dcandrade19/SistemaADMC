@@ -7,6 +7,7 @@
 
 <?php
 	include_once "./model/condominio.php";
+	include_once "./model/morador.php";
 	include_once "./model/usuario.php";
 	include_once "./model/bloco.php";
 	include_once "./model/apartamento.php";
@@ -44,11 +45,15 @@
 		elseif($controller =='apartamentos'){
 		    include './controller/apartamentos.php';
 		}
+		elseif($controller =='moradores'){
+		    include './controller/moradores.php';
+		}
 	}
     
 	
 
 ?>
 <?php include ('view/modal_' .$controller .'.php');?>
+<?php include ('view/modal_view_' .$controller .'.php');?>
 <?php include 'view/modal_confirmar.php';?>
 <?php include (FOOTER_TEMPLATE)?>
