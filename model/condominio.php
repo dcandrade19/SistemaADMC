@@ -55,12 +55,15 @@ class condominio {
     }
     
     function read($id){
-        $result = $this->dbh->query("SELECT * FROM condominios WHERE id = $id");
-        $usrArray = $result->fetchAll(PDO::FETCH_ASSOC);
-        $this->setId($usrArray[0]['id']);
-        $this->setNome($usrArray[0]['nome']);
-        $this->setEndereco($usrArray[0]['endereco']);
-        $this->setStatus($usrArray[0]['status']);
+        $result = $this->dbh->query("SELECT * FROM condominios WHERE id = {$id}");
+        if($result != false){
+            $usrArray = $result->fetchAll(PDO::FETCH_ASSOC);
+            $this->setId($usrArray[0]['id']);
+            $this->setNome($usrArray[0]['nome']);
+            $this->setEndereco($usrArray[0]['endereco']);
+            $this->setStatus($usrArray[0]['status']);
+        }
+        
     }
     
     function update(){

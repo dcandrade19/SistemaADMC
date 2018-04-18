@@ -134,6 +134,7 @@ class apartamento {
         $result = $dbh->query("SELECT * FROM blocos WHERE id_condominio = $id");
         $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
         $x=0;
+        $retorno = null;
         foreach ($chmArray as $row) {
             $bloco = new bloco();
             $bloco->read($row['id']);
@@ -147,10 +148,12 @@ class apartamento {
         $select = '<select required name="id_bloco" class="form-control" required>';
         
         $blocos = apartamento::getBlocoPorId($id);
-        if(count($blocos)){
-            $select.= '<option value="" selected disabled hidden>Selecione uma opção</option>';
-            foreach($blocos as $bloco){
-                $select.='<option value="'.$bloco->getId().'">'.$bloco->getNome().'</option>';
+        if($blocos){
+            if(count($blocos)){
+                $select.= '<option value="" selected disabled hidden>Selecione uma opção</option>';
+                foreach($blocos as $bloco){
+                    $select.='<option value="'.$bloco->getId().'">'.$bloco->getNome().'</option>';
+                }
             }
         }else{
             $select.= '<option value="" selected disabled hidden>Nenhum bloco cadastrado!</option>';

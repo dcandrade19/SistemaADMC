@@ -1,11 +1,11 @@
 <?php
-if($_POST[action]=="createupdate"){
+if($_POST['action']=="createupdate"){
     $condominio = new condominio();
-    if($_POST[id]!='') $condominio->read($_POST[id]);
+    if($_POST['id']!='') $condominio->read($_POST['id']);
     $condominio->setNome($_POST[nome]);
     $condominio->setStatus($_POST[status]);
     $condominio->setEndereco($_POST[endereco]);
-    if($_POST[id]!=''){
+    if($_POST['id']!=''){
         $condominio->update();
         $texto = 'editado';
     }else{
@@ -25,6 +25,8 @@ if($_POST[action]=="createupdate"){
     $condominio->read($_GET[id]);
     $nome_salvo = $condominio->getNome();
     $condominio->delete();
+    
+    //CRIAR MENSAGEM CASO EXISTA BLOCO CADASTRADO
     $res = '
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
     Condominio <strong>'.$nome_salvo.'</strong> deletado com sucesso!!!
