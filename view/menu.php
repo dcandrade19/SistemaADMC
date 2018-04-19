@@ -38,15 +38,6 @@ $(document).ready(function(){
     	$("#modal_<?php echo $controller?>").find('input[type!=hidden]').val('');
         $("#modal_<?php echo $controller?>").modal();       
     });
-    
-    function openCity(cityName) {
-        var i;
-        var x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-           x[i].style.display = "none";  
-        }
-        document.getElementById(cityName).style.display = "block";  
-    }
   
     $('body').on('click', '.disabled', function(e) {
         e.preventDefault();
