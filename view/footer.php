@@ -1,4 +1,4 @@
-</main> <!-- /container -->		
+
 <footer>			
 	<p>&copy;2018 - Sistema ADMC</p>		
 </footer>	

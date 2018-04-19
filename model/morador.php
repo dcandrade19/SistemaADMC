@@ -44,9 +44,9 @@ class morador {
     
     function getStatus(){
         if($this->status){
-            return 'Ativado';
+            return '<span class="badge badge-success">Ativado</span>';
         }else{
-            return 'Desativado';
+            return '<span class="badge badge-danger">Desativado</span>';
         }
     }
     

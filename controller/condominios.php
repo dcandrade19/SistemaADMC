@@ -88,7 +88,7 @@ if($_POST['action']=="createupdate"){
                 "<a class='icone edit' href='?controller=blocos&action=edit&id=".
                 $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
                 "<a class='icone del' href='?controller=blocos&action=delete&id=".
-                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$bloco->getStatus()."</div>";
                 
         }
     }
@@ -236,7 +236,7 @@ if(sizeof($condominios)){
             "<a class='icone edit' href='?controller=condominios&action=edit&id=".
             $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=condominios&action=delete&id=".
-            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$condominio->getStatus()."</div>";
             
     }
 }

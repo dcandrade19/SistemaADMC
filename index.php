@@ -21,7 +21,7 @@
 	}
 	
 	$logged = $_SESSION['logado'];
-    echo 'logado:' .$_SESSION['logado'] .'?';
+
 	if(!$logged){
 		include './controller/login.php';
 
@@ -54,6 +54,6 @@
 
 ?>
 <?php include ('view/modal_' .$controller .'.php');?>
-<?php include ('view/modal_view_' .$controller .'.php');?>
+<?php include ('view/modal_view_condominios.php');?>
 <?php include 'view/modal_confirmar.php';?>
 <?php include (FOOTER_TEMPLATE)?>

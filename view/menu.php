@@ -35,12 +35,9 @@ $(document).ready(function(){
 
 	 $('[data-toggle="tooltip"]').tooltip();   
     $("#btn-novo").click(function(){	
+    	$("#modal_<?php echo $controller?>").find('input[type!=hidden]').val('');
         $("#modal_<?php echo $controller?>").modal();       
     });
-    $('.modal').on('hidden.bs.modal', function() {
-        $(this).find('input').val('');
-      });
-
     
     function openCity(cityName) {
         var i;
@@ -51,7 +48,10 @@ $(document).ready(function(){
         document.getElementById(cityName).style.display = "block";  
     }
   
-    
+    $('body').on('click', '.disabled', function(e) {
+        e.preventDefault();
+        return false;
+    });
 });
 </script>
  	</div> 

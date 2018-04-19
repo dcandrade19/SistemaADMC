@@ -3,7 +3,6 @@ if(!empty($_POST['login'])){
 		$usuario = usuario::search($_POST['login']);
 		if($usuario) {
 		    if(password_verify($_POST['senha'], $usuario->getSenha())){
-		        echo 'passou';
 		        $_SESSION['logado'] = 1;
 		        $_SESSION['login'] = $usuario->getLogin();
 		        $_SESSION['nivel'] = $usuario->getNivel();

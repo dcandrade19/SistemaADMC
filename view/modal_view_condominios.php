@@ -17,13 +17,7 @@
       
       <div class="view-dados">
       
-      <div  id="head-dados"><?php if($status) {
-          echo '<span class="badge badge-success">Ativo</span>';
-      } else {
-          echo '<span class="badge badge-danger">Desativado</span>';
-      }
-          
-          ?> Endereço: <?=$endereco?> <span class="btns"><?=$btns?></span></div>
+      <div  id="head-dados"><?=$status?> Endereço: <?=$endereco?> <span class="btns"><?=$btns?></span></div>
       
       
       </div>

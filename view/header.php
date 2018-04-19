@@ -14,21 +14,43 @@
     
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-start" id="navbarTogglerDemo01">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
     <a class="navbar-brand" href="<?php echo BASEURL;?>">Sistema ADMC</a>
+    </li>
+    <li class="nav-item">
     <a href="?controller=condominios" class="nav-link">Condominios</a>
+    </li>
+    <li class="nav-item">
     <a href="?controller=blocos" class="nav-link">Blocos</a>
+    </li>
+    <li class="nav-item">
     <a href="?controller=apartamentos" class="nav-link">Apartamentos</a>
+    </li>
+    <li class="nav-item">
     <a href="?controller=moradores" class="nav-link">Moradores</a>
-    <a href="?controller=funcionarios" class="nav-link">Funcionarios</a>
-    <a href="?controller=avisos" class="nav-link">Avisos</a>
-    <a href="?controller=servicos" class="nav-link">Serviços</a>
-    <a href="?controller=despesas" class="nav-link">Despesas</a>
-    <a href="?controller=funcoes" class="nav-link">Funções</a>
+    </li>
+    <li class="nav-item">
+    <a href="?controller=funcionarios" class="nav-link disabled">Funcionarios</a>
+    </li>
+    <li class="nav-item">
+    <a href="?controller=avisos" class="nav-link disabled">Avisos</a>
+    </li>
+    <li class="nav-item">
+    <a href="?controller=servicos" class="nav-link disabled">Serviços</a>
+    </li>
+    <li class="nav-item">
+    <a href="?controller=despesas" class="nav-link disabled">Despesas</a>
+    </li>
+    <li class="nav-item">
+    <a href="?controller=funcoes" class="nav-link disabled">Funções</a>
+    </li>
+ </ul>
   </div>
   <div class="justify-content-end" id="navbarTogglerDemo01">
 	<?php if (!empty($_SESSION['logado'])){
@@ -55,7 +77,3 @@
 <header>
 
 </header>
-
-</body>
- 
-</html>
