@@ -1,4 +1,15 @@
 <?php
+$modo = 2;
+if ($_POST[select_opcoes]) {
+    if ($_POST[select_opcoes] == 'Todos') {
+        $modo = 2;
+    } elseif ($_POST[select_opcoes] == 'Ativados'){
+        $modo = 1;
+    } elseif ($_POST[select_opcoes] == 'Desativados'){
+        $modo = 0;
+    }
+}
+
 if($_POST[action]=="createupdate"){
     $morador = new morador();
     if($_POST[id]!='') $morador->read($_POST[id]);
@@ -49,7 +60,7 @@ if($_POST[action]=="createupdate"){
 }
 
 if($_POST[action]=='filtrar'){
-    $moradores = morador::search($_POST[filtro]);
+    $moradores = morador::search($_POST[filtro],$modo);
     $qtd = sizeof($moradores);
     if ($qtd == 0) {
         $texto = 'Nenhum morador encontrado!!!';
@@ -67,7 +78,7 @@ if($_POST[action]=='filtrar'){
     </button>
     </div>';
 }else{
-    $moradores = morador::getAll();
+    $moradores = morador::getAll($modo);
     $qtd = sizeof($moradores);
     if(empty($res)) {
         $res = '
@@ -99,8 +110,7 @@ if(sizeof($moradores)){
             <td>'.$morador->getCpf().'</td>
             <td>'.$morador->getNumeroApartamento($morador->getId_apartamento()).'</td>
             <td>'.$morador->getStatus().'</td>
-            <td><a class="icone view" href="?controller=moradores&action=view&id='.
-            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.
             $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=moradores&action=delete&id='.
@@ -114,14 +124,13 @@ if(sizeof($moradores)){
 
 if(sizeof($moradores)){
     foreach ($moradores as $morador) {
-        $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-key fa-3x'></i> <p>".
+        $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-user fa-3x'></i> <p>".
             $morador->getNome().
-            "</p> <div class='mi-btn'> <a class='icone view' href='?controller=moradores&action=view&id=".
-            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
+            "</p> <div class='mi-btn'>".
             "<a class='icone edit' href='?controller=moradores&action=edit&id=".
             $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=moradores&action=delete&id=".
-            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$morador->getStatus()."</div>";
             
     }
 }

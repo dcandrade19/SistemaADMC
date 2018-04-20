@@ -1,4 +1,15 @@
 <?php
+$modo = 2;
+if ($_POST[select_opcoes]) {
+    if ($_POST[select_opcoes] == 'Todos') {
+        $modo = 2;
+    } elseif ($_POST[select_opcoes] == 'Ativados'){
+        $modo = 1;
+    } elseif ($_POST[select_opcoes] == 'Desativados'){
+        $modo = 0;
+    }
+}
+
 if($_POST[action]=="createupdate"){
     $bloco = new bloco();
     if($_POST[id]!='') $bloco->read($_POST[id]);
@@ -48,7 +59,7 @@ if($_POST[action]=="createupdate"){
 }
 
 if($_POST[action]=="filtrar"){
-    $blocos = bloco::search($_POST[filtro]);
+    $blocos = bloco::search($_POST[filtro],$modo);
     $qtd = sizeof($blocos);
     if ($qtd == 0) {
         $texto = 'Nenhum bloco encontrado!!!';
@@ -66,7 +77,7 @@ if($_POST[action]=="filtrar"){
     </button>
     </div>';
 }else{
-    $blocos = bloco::getAll();
+    $blocos = bloco::getAll($modo);
     $qtd = sizeof($blocos);
     if(empty($res)) {
         $res = '
@@ -95,8 +106,7 @@ if(sizeof($blocos)){
             <td>'.$bloco->getNome().'</td>
             <td>'.$bloco->getNomeCondominio($bloco->getId_condominio()).'</td>
             <td>'.$bloco->getStatus().'</td>
-            <td><a class="icone view" href="?controller=blocos&action=view&id='.
-            $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <td>
             <a class="icone edit" href="?controller=blocos&action=edit&id='.
             $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=blocos&action=delete&id='.
@@ -112,8 +122,7 @@ if(sizeof($blocos)){
     foreach ($blocos as $bloco) {
         $tb .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-th-large fa-3x'></i> <p>".
             $bloco->getNome().
-            "</p> <div class='mi-btn'> <a class='icone view' href='?controller=blocos&action=view&id=".
-            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
+            "</p> <div class='mi-btn'>".
             "<a class='icone edit' href='?controller=blocos&action=edit&id=".
             $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=blocos&action=delete&id=".

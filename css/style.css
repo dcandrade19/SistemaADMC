@@ -37,6 +37,14 @@ body {
 }
 .btn-menu p {
 	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:    ellipsis;
+}
+h3 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:    ellipsis;
 }
 .btn-menu:hover {
 	box-shadow: 2px 2px 2px 2px;
@@ -90,7 +98,7 @@ footer {
 }
 .navbar {
 	position: fixed;
-	box-shadow: 0px 4px #888888;
+	box-shadow: 3px 3px 3px;
 }
 .fix-btn-group {
 	position: relative;
@@ -140,4 +148,33 @@ footer {
 }
 .btns {
 	margin-left: 10px;
+}
+.entrar {
+	margin-bottom: 0;
+}
+.entrar-div {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-bottom: 0;
+	margin-top: 8px;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #212529;
+}
+.alert {
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #212529;
+}
+.dropdown-menu {
+	box-shadow: 3px 3px 3px;
+}
+.modal-content {
+	box-shadow: 3px 3px 3px 3px;
+}
+.input-group-text {
+	background: #6C757D;
+	border-radius: 5px;
+	color: #fff;
 }

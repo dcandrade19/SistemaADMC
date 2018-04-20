@@ -1,4 +1,15 @@
 <?php
+$modo = 2;
+if ($_POST[select_opcoes]) {
+    if ($_POST[select_opcoes] == 'Todos') {
+        $modo = 2;
+    } elseif ($_POST[select_opcoes] == 'Ativados'){
+        $modo = 1;
+    } elseif ($_POST[select_opcoes] == 'Desativados'){
+        $modo = 0;
+    }
+}
+
 if($_POST[action]=="createupdate"){
     $apartamento = new apartamento();
     if($_POST[id]!='') $apartamento->read($_POST[id]);
@@ -47,7 +58,7 @@ if($_POST[action]=="createupdate"){
 }
 
 if($_POST[action]=='filtrar'){
-    $apartamentos = apartamento::search($_POST[filtro]);
+    $apartamentos = apartamento::search($_POST[filtro],$modo);
     $qtd = sizeof($apartamentos);
     if ($qtd == 0) {
         $texto = 'Nenhum apartamento encontrado!!!';
@@ -65,7 +76,7 @@ if($_POST[action]=='filtrar'){
     </button>
     </div>';
 }else{
-    $apartamentos = apartamento::getAll();
+    $apartamentos = apartamento::getAll($modo);
     $qtd = sizeof($apartamentos);
     if(empty($res)) {
         $res = '
@@ -95,8 +106,7 @@ if(sizeof($apartamentos)){
             <td>'.$apartamento->getNumero().'</td>
             <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
             <td>'.$apartamento->getStatus().'</td>
-            <td><a class="icone view" href="?controller=apartamentos&action=view&id='.
-            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <td>
             <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
             $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=apartamentos&action=delete&id='.
@@ -112,12 +122,11 @@ if(sizeof($apartamentos)){
     foreach ($apartamentos as $apartamento) {
         $cond .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-key fa-3x'></i> <p>".
             $apartamento->getNumero().
-            "</p> <div class='mi-btn'> <a class='icone view' href='?controller=apartamentos&action=view&id=".
-            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
+            "</p> <div class='mi-btn'>".
             "<a class='icone edit' href='?controller=apartamentos&action=edit&id=".
             $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=apartamentos&action=delete&id=".
-            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div></div>";
+            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$apartamento->getStatus()."</div>";
             
     }
 }

@@ -8,12 +8,9 @@
     <label for="exampleDropdownFormPassword2">Senha</label>
     <input type="password" name="senha" class="form-control" id="exampleDropdownFormPassword2" placeholder="******">
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Lembre-se de mim
-    </label>
+  <div class="form-group entrar">
+  <button id="entrar" type="submit" class="btn btn-secondary">Entrar</button>
+  <?=$res?>
   </div>
-  <button type="submit" class="btn btn-secondary">Entrar</button>
 </form>
 </div>

@@ -11,12 +11,12 @@
   <div class="row ">  
     <div class="form-group col-md-4">
       <label for="name">Nome: </label>
-      <input type="text" class="form-control" name="nome" value="<?=$nome?>" required>
+      <input type="text" class="form-control" name="nome" maxlength="24" size="24" value="<?=$nome?>" required>
     </div>
 
     <div class="form-group col-md-6">
       <label for="campo2">Endereço: </label>
-      <input type="text" class="form-control" name="endereco" value="<?=$endereco?>" required>
+      <input type="text" class="form-control" name="endereco" maxlength="64" value="<?=$endereco?>" required>
     </div>
 
     <div class="form-group col-md-2">
@@ -27,7 +27,7 @@
       </select>
     </div>
   </div>
-  	<input type="hidden" name="id" value="<?=$id?>">
+  	<input hidden="true" name="id" value="<?=$id?>">
 	<input type="hidden" name="controller" value="condominios">
 	<input type="hidden" name="action" value="createupdate">
 </div>

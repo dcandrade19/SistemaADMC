@@ -28,7 +28,7 @@
       </select>
     </div>
   </div>
-  	<input type="hidden" name="id" value="<?=$id?>">
+  	<input hidden="true" name="id" value="<?=$id?>">
 	<input type="hidden" name="controller" value="blocos">
 	<input type="hidden" name="action" value="createupdate">
 </div>

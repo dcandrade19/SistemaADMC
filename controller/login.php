@@ -9,7 +9,21 @@ if(!empty($_POST['login'])){
 		        $_SESSION['id'] = $usuario->getId();
 		        $logged = 1;
 		        header('Location: ' .BASEURL);
+		    } else {
+		        $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
+    Senha errada!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
 		    }
+		} else {
+		    $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
+    Usuario não encontrado!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
 		}
 		}
 		

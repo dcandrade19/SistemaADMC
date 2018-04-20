@@ -77,9 +77,14 @@ class condominio {
     }
     
     
-    static function getAll($status = 1){
+    static function getAll($status = 2){
+        if ($status == 2) {
+            $complemento = '';
+        } else {
+            $complemento = 'WHERE status = ' .$status;
+        }
         $dbh = dataBase::getHandler();
-        $result = $dbh->query("SELECT id FROM condominios WHERE status = $status ORDER BY id DESC");
+        $result = $dbh->query("SELECT id FROM condominios $complemento ORDER BY id DESC");
         $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
         $x=0;
         foreach ($chmArray as $row) {
@@ -91,9 +96,15 @@ class condominio {
         return $retorno;
     }
     
-    static function search($keyword = "", $status = 1){
+    static function search($keyword = "", $status = 2){
+        if ($status == 2) {
+            $complemento = 'WHERE';
+        } else {
+            $complemento = 'WHERE status = ' .$status. ' AND';
+            echo $status;
+        }
         $dbh = dataBase::getHandler();
-        $result = $dbh->query("SELECT id FROM condominios WHERE status = $status AND nome LIKE '%$keyword%' ORDER BY id DESC");
+        $result = $dbh->query("SELECT id FROM condominios $complemento nome LIKE '%$keyword%' ORDER BY id DESC");
         
         $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
         $x=0;

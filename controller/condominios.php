@@ -1,4 +1,15 @@
 <?php
+$modo = 2;
+if ($_POST[select_opcoes]) {
+    if ($_POST[select_opcoes] == 'Todos') {
+        $modo = 2;
+    } elseif ($_POST[select_opcoes] == 'Ativados'){
+        $modo = 1;
+    } elseif ($_POST[select_opcoes] == 'Desativados'){
+        $modo = 0;
+    }
+}
+
 if($_POST['action']=="createupdate"){
     $condominio = new condominio();
     if($_POST['id']!='') $condominio->read($_POST['id']);
@@ -83,8 +94,7 @@ if($_POST['action']=="createupdate"){
         foreach ($blocos as $bloco) {
             $blocos_lista .= "<div class='col-xs-12 text-center'> <div class='btn-menu' onclick='location.href='?teste''> <i class='fas fa-th-large fa-3x'></i> <p>".
                 $bloco->getNome().
-                "</p> <div class='mi-btn'> <a class='icone view' href='?controller=blocos&action=view&id=".
-                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Detalhes'><i class='fas fa-eye'></i></a>".
+                "</p> <div class='mi-btn'>".
                 "<a class='icone edit' href='?controller=blocos&action=edit&id=".
                 $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
                 "<a class='icone del' href='?controller=blocos&action=delete&id=".
@@ -112,8 +122,7 @@ if($_POST['action']=="createupdate"){
             <td>'.$apartamento->getNumero().'</td>
             <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
             <td>'.$apartamento->getStatus().'</td>
-            <td><a class="icone view" href="?controller=apartamentos&action=view&id='.
-            $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <td>
             <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
             $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=apartamentos&action=delete&id='.
@@ -146,8 +155,7 @@ if($_POST['action']=="createupdate"){
             <td>'.$morador->getCpf().'</td>
             <td>'.$morador->getNumeroApartamento($morador->getId_apartamento()).'</td>
             <td>'.$morador->getStatus().'</td>
-            <td><a class="icone view" href="?controller=moradores&action=view&id='.
-            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-eye"></i></a>
+            <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.
             $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=moradores&action=delete&id='.
@@ -166,7 +174,7 @@ if($_POST['action']=="createupdate"){
 }
 
 if($_POST[action]=='filtrar'){
-    $condominios = condominio::search($_POST[filtro]);
+    $condominios = condominio::search($_POST[filtro],$modo);
     $qtd = sizeof($condominios);
     if ($qtd == 0) {
         $texto = 'Nenhum condominio encontrado!!!';
@@ -184,7 +192,7 @@ if($_POST[action]=='filtrar'){
     </button>
     </div>';
 }else{
-    $condominios = condominio::getAll();
+    $condominios = condominio::getAll($modo);
     $qtd = sizeof($condominios);
     if(empty($res)) {
         $res = '
