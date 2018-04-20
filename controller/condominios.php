@@ -25,7 +25,7 @@ if($_POST['action']=="createupdate"){
     }
     $res = '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    Condominio <strong>'.$condominio->getNome().'</strong> '.$texto.' com sucesso!!!
+    Condominio <strong>'.$condominio->getNome().' </strong>'.$texto.' com sucesso!!!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -106,7 +106,7 @@ if($_POST['action']=="createupdate"){
    if(sizeof($apartamentos_lista)){
         $tb_h = '<table class="table">
             <thead>
-            <tr id="tr-head">
+            <tr class="tr-head">
             <th scope="col">#</th>
             <th scope="col">Numero</th>
             <th scope="col">Bloco</th>
@@ -137,7 +137,7 @@ if($_POST['action']=="createupdate"){
     if(sizeof($moradores_lista)){
         $tb_he = '<table class="table">
             <thead>
-            <tr id="tr-head">
+            <tr class="tr-head">
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Cpf</th>
@@ -184,7 +184,7 @@ if($_POST[action]=='filtrar'){
     }else {
         $texto = 'condominios encontrados!!!';
     }
-    $res = '
+    $resf = '
     <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>'.$qtd.'</strong> '.$texto. '
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -195,7 +195,7 @@ if($_POST[action]=='filtrar'){
     $condominios = condominio::getAll($modo);
     $qtd = sizeof($condominios);
     if(empty($res)) {
-        $res = '
+        $resf = '
     <div class="alert alert-dark alert-dismissible fade show" role="alert">
     Exibindo <strong>'.$qtd.'</strong> registros.
     </div>';
@@ -206,7 +206,7 @@ if($_POST[action]=='filtrar'){
 if(sizeof($condominios)){
     $tb_head = '<table class="table lista-itens">
             <thead>
-            <tr id="tr-head">
+            <tr class="tr-head">
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Endereço</th>

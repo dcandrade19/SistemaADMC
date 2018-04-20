@@ -61,7 +61,9 @@
      '.$texto .'
      </button>
      <div class="dropdown-menu dropdown-menu-right">
-     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirm"><span class="sair">Sair <i class="fas fa-sign-in-alt"></i></span></a>
+     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_log"><span class="drop-opc"><i class="fas fa-list"></i> Log </span></a>
+     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirm"><span class="sair"><i class="fas fa-sign-in-alt"></i> Sair </span></a>
+     
      </div>
      </div>';
 	} else {

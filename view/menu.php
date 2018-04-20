@@ -4,6 +4,7 @@
 <div class="busca form-inline">
 	<input type="hidden" name="controller" value="<?php $controller?>">
 	<input type="hidden" name="action" value="filtrar">
+	
 	<button class="btn btn-secondary my-2 my-sm-0 btn-atualizar" type="submit"><i class="fas fa-sync-alt"></i> Atualizar</button>
 	
 	<?php
@@ -48,7 +49,26 @@ $select_views = $_POST['select_views'];
     </div>
 </div>
 <hr>
-<?=$res?>
+<?php if ($res){
+    echo $res;
+}elseif($resf) {
+    echo $resf;
+}?>
+<?php 
+if (!isset($_SESSION['log'])) {
+    $_SESSION['log'] = array();
+    $_SESSION['time'] = array();
+}
+
+if ($res) {
+    
+    $data = date("d/m/Y H:i:s");
+    
+    array_push( $_SESSION['log'] , $res);
+    array_push( $_SESSION['time'] , $data);
+       
+}
+?>
   <div class="row justify-content-start">
     <div class="col-xs-12 text-center">
     <?php echo '<div id="btn-novo" class="btn-menu">' ?>   
@@ -66,7 +86,7 @@ $select_views = $_POST['select_views'];
 	} else {
 	    echo $tb;
 	}?>
-	
+
   </form>
   </div>
 

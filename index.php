@@ -53,7 +53,9 @@
 	
 
 ?>
+<?php include 'view/modal_confirmar.php';?>
+<?php include 'view/modal_log.php';?>
 <?php include ('view/modal_' .$controller .'.php');?>
 <?php include ('view/modal_view_condominios.php');?>
-<?php include 'view/modal_confirmar.php';?>
+
 <?php include (FOOTER_TEMPLATE)?>

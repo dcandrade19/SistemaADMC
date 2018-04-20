@@ -52,10 +52,10 @@ h3 {
 tr{	
 	transition: box-shadow 0.3s;
 }
-tr:hover:not(#tr-head) {
+tr:hover:not(.tr-head) {
 	box-shadow: 2px 2px 2px 2px;
 }
-a {
+a:not(.link-fix) {
 	color: #888;
 	transition: color 0.5s;
 }
@@ -117,12 +117,16 @@ footer {
 .del:hover {
 	color: red;
 }
-.sair {
+.sair , .drop-opc {
+	color: #888;
 	font-weight: bold;
 	transition: color 0.5s;
 }
 .sair:hover {
 	color: red;
+}
+.drop-opc:hover {
+	color: #212529;
 }
 .dropdown-item {
 	text-align: left;

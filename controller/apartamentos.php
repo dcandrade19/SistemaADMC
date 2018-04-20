@@ -68,7 +68,7 @@ if($_POST[action]=='filtrar'){
     }else {
         $texto = 'apartamentos encontrados!!!';
     }
-    $res = '
+    $resf = '
     <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>'.$qtd.'</strong> '.$texto. '
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -79,7 +79,7 @@ if($_POST[action]=='filtrar'){
     $apartamentos = apartamento::getAll($modo);
     $qtd = sizeof($apartamentos);
     if(empty($res)) {
-        $res = '
+        $resf = '
     <div class="alert alert-dark alert-dismissible fade show" role="alert">
     Exibindo <strong>'.$qtd.'</strong> registros.
     </div>';
@@ -90,7 +90,7 @@ if($_POST[action]=='filtrar'){
 if(sizeof($apartamentos)){
     $tb_head = '<table class="table lista-itens">
             <thead>
-            <tr id="tr-head">
+            <tr class="tr-head">
             <th scope="col">#</th>
             <th scope="col">Numero</th>
             <th scope="col">Bloco</th>

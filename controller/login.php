@@ -7,7 +7,7 @@ if(!empty($_POST['login'])){
 		        $_SESSION['login'] = $usuario->getLogin();
 		        $_SESSION['nivel'] = $usuario->getNivel();
 		        $_SESSION['id'] = $usuario->getId();
-		        $logged = 1;
+		        $logged = 1;   
 		        header('Location: ' .BASEURL);
 		    } else {
 		        $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
