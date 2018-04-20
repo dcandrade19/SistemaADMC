@@ -61,9 +61,11 @@
      '.$texto .'
      </button>
      <div class="dropdown-menu dropdown-menu-right">
+     <hr class="hr-top">
      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_log"><span class="drop-opc"><i class="fas fa-list"></i> Log </span></a>
+     <hr>
      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirm"><span class="sair"><i class="fas fa-sign-in-alt"></i> Sair </span></a>
-     
+      <hr class="hr-bot">
      </div>
      </div>';
 	} else {

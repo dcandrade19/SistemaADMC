@@ -14,10 +14,12 @@
             $log_sessao = $_SESSION['log'];
             $replace = array('&times;','!');
             $log_time = $_SESSION['time'];
+           
             
             $log_sessao = array_reverse($log_sessao);
             $log_time = array_reverse($log_time);
             
+
             $log_head = '<table class="table tb-log ">
             <thead>
             <tr class="tr-head">

@@ -182,3 +182,9 @@ footer {
 	border-radius: 5px;
 	color: #fff;
 }
+.hr-bot {
+	margin-bottom: -6px;
+}
+.hr-top {
+	margin-top: -6px;
+}
