@@ -17,12 +17,19 @@ if($_POST[action]=="createupdate"){
     $morador->setStatus($_POST[status]);
     $morador->setCpf($_POST[cpf]);
     $morador->setId_apartamento($_POST[id_apartamento]);
-    $morador->setId_usuario($_POST[id_usuario]);
+    //$morador->setId_usuario($_POST[id_usuario]);
+    $usuario = new usuario();
+    $usuario->setLogin("usuario");
+    $usuario->setSenha(password_hash("123456", PASSWORD_DEFAULT));
+    $usuario->setStatus(1);
+    $usuario->setNivel(2);
     if($_POST[id]!=''){
         $morador->update();
         $texto = 'editado';
     }else{
-        $morador->create();
+        $usuario->create();
+        $morador->setId_usuario($usuario->getId());
+        $morador->create(); 
         $texto = 'salvo';
     }
     $res = '

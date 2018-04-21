@@ -53,7 +53,7 @@
 </div>
 
   	<input hidden="true" name="id" value="<?=$id?>">
-  	<input type="hidden" name="id_usuario" value="0">
+  	<input type="hidden" name="id_usuario" value="1">
 	<input type="hidden" name="controller" value="moradores">
 	<input type="hidden" name="action" value="createupdate">
 </div>
