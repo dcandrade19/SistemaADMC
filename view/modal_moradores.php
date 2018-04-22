@@ -54,14 +54,14 @@
 </div>
 
 <div class="row ">  
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-4" data-toggle="tooltip" data-placement="bottom" title="Você pode alterar este campo ou manter o login gerado.">
       <label for="login">Usuario: </label>
       <input type="text"  id="login" class="form-control" name="login" value="<?=$login?>" required>
     </div>
     
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-4" data-toggle="tooltip" data-placement="bottom" title="Informe uma senha ou vazio para senha padrão.">
       <label for="senha">Senha: </label>
-      <input type="text" class="form-control" name="senha" placeholder="*******" value="">
+      <input type="password" class="form-control" name="senha" placeholder="*******" value="">
     </div>
     
     <div class="form-group col-md-2">
