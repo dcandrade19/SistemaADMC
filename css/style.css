@@ -2,7 +2,7 @@ html {
   height: 100%;
 }
 body {
-  height: 100%;
+  
   padding: 0;
 }
 .login-bg {
@@ -186,4 +186,9 @@ footer {
 }
 .hr-top {
 	margin-top: -6px;
+}
+.erro {
+	margin: auto;
+    width: 60%;
+    padding: 10px;
 }

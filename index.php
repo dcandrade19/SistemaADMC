@@ -47,6 +47,8 @@
 		}
 		elseif($controller =='funcionarios'){
 		    include './controller/funcionarios.php';
+		} else {
+		    include './view/404.php';
 		}
 	}
     
