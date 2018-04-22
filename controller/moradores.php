@@ -82,7 +82,7 @@ if($_POST[action]=="createupdate"){
     $cpf = $moradorEdicao->getCpf();
     $id = $moradorEdicao->getId();
     $usuarioEdicao = new usuario();
-    $usuarioEdicao->read($_GET[id_usuario]);
+    $usuarioEdicao->read($moradorEdicao->getId_usuario());
     $login = $usuarioEdicao->getLogin();
     $status = $usuarioEdicao->getStatus();
     $senha = $usuarioEdicao->getSenha();
@@ -200,7 +200,7 @@ if(sizeof($moradores)){
             <td>'.$morador->getStatus().'</td>
             <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.
-            $morador->getId().'&id_usuario='.$morador->getId_usuario().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
+            $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
             <a class="icone del" href="?controller=moradores&action=delete&id='.
             $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-trash-alt"></i></a> </td>
             </tr>
@@ -218,7 +218,7 @@ if(sizeof($moradores)){
             $morador->getNome().
             "</p> <div class='mi-btn'>".
             "<a class='icone edit' href='?controller=moradores&action=edit&id=".
-            $morador->getId().'&id_usuario='.$morador->getId_usuario()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
+            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=moradores&action=delete&id=".
             $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$tipo .'|'. $morador->getStatus()."</div>";
             
