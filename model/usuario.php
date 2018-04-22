@@ -45,12 +45,30 @@ class usuario {
         return $this->status;
     }
     
+    function getStatusB(){
+        if($this->status){
+            return '<span class="badge badge-success">Ativado</span>';
+        }else{
+            return '<span class="badge badge-danger">Desativado</span>';
+        }
+    }
+    
     function setNivel($nivel){
         $this->nivel = $nivel;
     }
     
     function getNivel(){
         return $this->nivel;
+    }
+    
+    function getTipo(){
+        if($this->nivel == 0){
+            return '<span class="badge badge-secondary">Administrador</span>';
+        }elseif($this->nivel == 1){
+            return '<span class="badge badge-warning">Sindico</span>';
+        }elseif($this->nivel == 2){
+            return '<span class="badge badge-primary">Morador</span>';
+        }
     }
     
     function create(){

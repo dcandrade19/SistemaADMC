@@ -7,11 +7,10 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="<?php echo BASEURL; ?>_support/bootstrap/js/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo BASEURL; ?>_support/bootstrap/js/jquery.mask.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="<?php echo BASEURL; ?>_support/bootstrap/js/jquery.mask.min.js"></script>  
 	<link rel="stylesheet" href="<?php echo BASEURL;?>_support/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo BASEURL;?>css/style.css">
-    
+    <title>Sistema ADMC</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -36,7 +35,8 @@
     <a href="?controller=moradores" class="nav-link">Moradores</a>
     </li>
     <li class="nav-item">
-    <a href="?controller=funcionarios" class="nav-link disabled">Funcionarios</a>
+    <a href="?controller=funcionarios" class="nav-link">Funcionarios
+    <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Em Andamento">wip</span></a>
     </li>
     <li class="nav-item">
     <a href="?controller=avisos" class="nav-link disabled">Avisos</a>
@@ -62,6 +62,8 @@
      </button>
      <div class="dropdown-menu dropdown-menu-right">
      <hr class="hr-top">
+     <a class="dropdown-item" href="?controller=moradores&action=view&id='.$_SESSION['id'].'" ><span class="drop-opc"><i class="fas fa-user"></i> Perfil </span></a>
+     <hr>
      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_log"><span class="drop-opc"><i class="fas fa-list"></i> Log </span></a>
      <hr>
      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirm"><span class="sair"><i class="fas fa-sign-in-alt"></i> Sair </span></a>

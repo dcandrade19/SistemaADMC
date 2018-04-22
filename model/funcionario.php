@@ -52,7 +52,11 @@ class funcionario {
     }
     
     function getStatus(){
-        return $this->status;
+        if($this->status){
+            return '<span class="badge badge-success">Ativado</span>';
+        }else{
+            return '<span class="badge badge-danger">Desativado</span>';
+        }
     }
     
     function setId_funcao($id_funcao){
@@ -97,6 +101,46 @@ class funcionario {
     function delete(){
         $this->dbh->exec("DELETE FROM funcionarios WHERE id = $this->id");
         $this->id = 0; // Remover referência
+    }
+    
+    static function getAll($status = 2){
+        if ($status == 2) {
+            $complemento = '';
+        } else {
+            $complemento = 'WHERE status = ' .$status;
+        }
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM funcionarios $complemento ORDER BY id DESC");
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $funcionario = new funcionario();
+            $funcionario->read($row[id]);
+            $retorno[$x] = $funcionario;
+            $x++;
+        }
+        return $retorno;
+    }
+    
+    static function search($keyword = "", $status = 2){
+        if ($status == 2) {
+            $complemento = 'WHERE';
+        } else {
+            $complemento = 'WHERE status = ' .$status. ' AND';
+            echo $status;
+        }
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT id FROM funcionarios $complemento nome LIKE '%$keyword%' ORDER BY id DESC");
+        
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        foreach ($chmArray as $row) {
+            $funcionario = new funcionario();
+            $funcionario->read($row[id]);
+            $retorno[$x] = $funcionario;
+            $x++;
+        }
+        return $retorno;
     }
 }
 ?>

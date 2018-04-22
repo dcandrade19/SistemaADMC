@@ -193,5 +193,34 @@ class morador {
         return $retorno;
     }
     
+    static function getMoradoresPorId_usuario($id){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT * FROM moradores WHERE id_usuario = $id");
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        $retorno = null;
+        foreach ($chmArray as $row) {
+            $morador = new morador();
+            $morador->read($row['id']);
+            $retorno[$x] = $morador;
+            $x++;
+        }
+        return $retorno[0];
+    }
+    static function getUsuario($id){
+        $dbh = dataBase::getHandler();
+        $result = $dbh->query("SELECT * FROM usuarios WHERE id = $id");
+        $chmArray = $result->fetchAll(PDO::FETCH_ASSOC);
+        $x=0;
+        $retorno = null;
+        foreach ($chmArray as $row) {
+            $usuario = new usuario();
+            $usuario->read($row['id']);
+            $retorno[$x] = $usuario;
+            $x++;
+        }
+        return $retorno[0];
+    }
+    
 }
 ?>

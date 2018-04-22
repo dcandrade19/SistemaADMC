@@ -20,23 +20,15 @@ include_once "../model/morador.php";
         echo validaCPF($cpf);
     }
     
-    /*if(isset($_POST['login'])){
+    if(isset($_POST['login'])){
         $nome = strtolower($_POST['login']);
         
-        //gerar senha aleatória ou usar 5 dígitos CPF
-        $senha = '123456';
-        
-        $_POST['usuario']['login'] = $nome;
-        $_POST['usuario']['senha'] = password_hash($senha, PASSWORD_DEFAULT);
-        $_POST['usuario']['status'] = 1;
-        $_POST['usuario']['nivel'] = $_POST['nivel'];
-        
-        
-        $id = adicionarGenerico('usuario', 'usuarios');
-        
-        $array = array($nome, $senha, $id);
-        
-        echo json_encode($array);
-        //echo $usuario =  gerar($nome);
-    }*/
+        $novo_nome = explode(" ", $nome);
+ 
+        echo  $novo_nome[0];
+
+
+    }
+    
+   
 ?>

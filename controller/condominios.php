@@ -141,19 +141,29 @@ if($_POST['action']=="createupdate"){
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Cpf</th>
-            <th scope="col">Apartamento</th>
+            <th scope="col">Apt</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Login</th>
             <th scope="col">Status</th>
             <th scope="col">Opções</th>
             </tr>
             ';
-        $tb_en = '</table>';
-        foreach ($moradores_lista as $morador) {
-            $tb_co .= '</thead>
+    $tb_en = '</table>';
+    foreach ($moradores_lista as $morador) {
+        $usuario = $morador->getUsuario($morador->getId_usuario());
+        $login_u = $usuario->getLogin();
+        $tipo = $usuario->getTipo();
+        $status_usuario = $usuario->getStatusB();
+        $tb_co .= '</thead>
             <tbody>
             <tr><th scope="row">'.$morador->getId().'</th>
             <td>'.$morador->getNome().'</td>
             <td>'.$morador->getCpf().'</td>
             <td>'.$morador->getNumeroApartamento($morador->getId_apartamento()).'</td>
+            <td>'.$login_u.'</td>
+            <td>'.$tipo.'</td>
+            <td>'.$status_usuario.'</td>
             <td>'.$morador->getStatus().'</td>
             <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.

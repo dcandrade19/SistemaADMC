@@ -11,12 +11,12 @@
   <div class="row ">  
     <div class="form-group col-md-4">
       <label for="name">Nome: </label>
-      <input type="text" class="form-control" name="nome" value="<?=$nome?>" required>
+      <input type="text" class="form-control" id="nome" name="nome" value="<?=$nome?>" onchange="gerarusuario(this.value)" required>
     </div>
 
     <div class="form-group col-md-6">
       <label for="campo2">CPF: </label>
-      <input type="text" class="form-control" id="cpf" name="cpf" value="<?=$cpf?>" onchange="validarCPF(this.value)" required>
+      <input type="text" class="form-control cpf"  id="cpfb" name="cpf" value="<?=$cpf?>" onchange="validarCPF(this.value)" required>
     </div>
 
     <div class="form-group col-md-2">
@@ -51,9 +51,39 @@
       </select>
     </div>
 </div>
+</div>
 
+<div class="row ">  
+    <div class="form-group col-md-4">
+      <label for="login">Usuario: </label>
+      <input type="text"  id="login" class="form-control" name="login" value="<?=$login?>" required>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="senha">Senha: </label>
+      <input type="text" class="form-control" name="senha" placeholder="*******" value="">
+    </div>
+    
+    <div class="form-group col-md-2">
+      <label for="nivel">Nivel: </label>
+      <select class="custom-select" name="nivel" value="<?=$nivel?>">
+        <option value="2">Morador</option>
+        <option value="1">Sindico</option>
+        <option value="0">Administrador</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-2">
+      <label for="usuario_status">Status: </label>
+      <select class="custom-select" name="usuario_status" value="<?=$usuario_status?>">
+        <option value="1">Ativado</option>
+        <option value="0">Desativado</option>
+      </select>
+    </div>
+    
+</div>
   	<input hidden="true" name="id" value="<?=$id?>">
-  	<input type="hidden" name="id_usuario" value="1">
+  	<input hidden="true" name="id_usuario" value="<?=$id_usuario?>">
 	<input type="hidden" name="controller" value="moradores">
 	<input type="hidden" name="action" value="createupdate">
 </div>
@@ -67,6 +97,35 @@
   </div>
 </div>
 <script type="text/javascript">
+
+function validarCPF(cpf){ 
+	$.ajax({
+        type: 'post',
+        url: 'view/fetch_data.php',
+        data: {
+         cpf: cpf
+        },
+        success: function (response) {
+        	if(!response){
+            	alert('CPF inválido!');
+            	document.getElementById("cpfb").value='';  
+        	}
+        }
+    });
+}
+function gerarusuario(nome){ 
+    	$.ajax({
+            type: 'post',
+            url: 'view/fetch_data.php',
+            data: {
+             login: nome
+            },
+            success: function (response) {
+            document.getElementById("login").value=response;   
+            }
+        });
+}
+
 function fetch_select(val){
          $.ajax({
              type: 'post',
@@ -90,20 +149,5 @@ function fetch_select_apt(val){
            document.getElementById("apartamento").innerHTML=response;
         }
     });
-}
-    function validarCPF(cpf){ 
-    	$.ajax({
-            type: 'post',
-            url: 'view/fetch_data.php',
-            data: {
-             cpf: cpf
-            },
-            success: function (response) {
-            	if(!response){
-                	alert('CPF inválido!');
-                	document.getElementById("cpf").value='';  
-            	}
-            }
-        });
 }
 </script>

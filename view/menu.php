@@ -91,9 +91,10 @@ if ($res) {
   </div>
 
   <script>
-$(document).ready(function(){
+$(document).ready(function($){
 
-	$('#cpf').mask('000.000.000-00');
+	$('.cpf').mask('000.000.000-00');
+	$('#moeda').mask('000,000.00' , {reverse: true});
 
 	 $('[data-toggle="tooltip"]').tooltip();   
     $("#btn-novo").click(function(){	
