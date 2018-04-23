@@ -41,6 +41,10 @@ class apartamento {
     }
     
     function getStatus(){
+        return $this->status;
+    }
+    
+    function getStatusBadge(){
         if($this->status){
             return '<span class="badge badge-success">Ativado</span>';
         }else{
@@ -124,14 +128,14 @@ class apartamento {
         }
         return $retorno;
     }
-    
+
     static function doSelectCondominio(){
-        $select = '<select required name="id_condominio" class="form-control" required onChange="fetch_select(this.value);">';
+        $select = '<select required name="id_condominio" class="form-control"  required onChange="fetch_select(this.value);">';
         
         $condominios = condominio::getAll();
         if(count($condominios)){
             $select.= '<option value="" selected disabled hidden>Selecione uma opção</option>';
-            foreach($condominios as $condominio){
+            foreach($condominios as $condominio){       
                 $select.='<option value="'.$condominio->getId().'">'.$condominio->getNome().'</option>';
             }
         }else{
@@ -173,5 +177,6 @@ class apartamento {
         $select.='</select>';
         return $select;
     }
+
 }
 ?>

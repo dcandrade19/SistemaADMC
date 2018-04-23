@@ -35,7 +35,7 @@ $select_views = $_POST['select_views'];
       <div class="input-group mr-sm-2">
   <div class="input-group-prepend">
   
-    <label class="input-group-text" for="select_views"><i class="fas fa-eye"></i> &nbsp; Modo</label>
+    <label class="input-group-text " for="select_views"><i class="fas fa-eye"></i> &nbsp; Modo</label>
   </div>
        <select class="custom-select" name="select_views" onchange="this.form.submit()" id="select_views">
         <?php foreach($views as $view){ ?>
@@ -92,16 +92,21 @@ if ($res) {
 
   <script>
 $(document).ready(function($){
-
 	$('.cpf').mask('000.000.000-00');
 	$('#moeda').mask('000,000.00' , {reverse: true});
 
 	 $('[data-toggle="tooltip"]').tooltip();   
     $("#btn-novo").click(function(){	
     	$("#modal_<?php echo $controller?>").find('input[type!=hidden]').val('');
+    	$('option[value="1"]').prop("selected", true);
+    	$('option[value=""]').prop("selected", true);
         $("#modal_<?php echo $controller?>").modal();       
     });
-  
+
+    $('#modal_moradores').on('hidden.bs.modal', function (e) {
+    	document.getElementById("cpfb").classList.remove("is-valid");
+    	})
+    
     $('body').on('click', '.disabled', function(e) {
         e.preventDefault();
         return false;

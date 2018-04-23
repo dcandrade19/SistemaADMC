@@ -120,7 +120,7 @@ if(sizeof($funcionarios)){
             <td>'.$funcionario->getId_condominio().'</td>
             <td>'.$funcionario->getId_funcao().'</td>
             <td>'.$funcionario->getId_despesa().'</td>
-            <td>'.$funcionario->getStatus().'</td>
+            <td>'.$funcionario->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=funcionarios&action=edit&id='.
             $funcionario->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -141,7 +141,7 @@ if(sizeof($funcionarios)){
             "<a class='icone edit' href='?controller=funcionarios&action=edit&id=".
             $funcionario->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=funcionarios&action=delete&id=".
-            $funcionario->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$funcionario->getStatus()."</div>";
+            $funcionario->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$funcionario->getStatusBadge()."</div>";
             
     }
 }

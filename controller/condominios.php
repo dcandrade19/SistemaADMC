@@ -61,7 +61,7 @@ if($_POST['action']=="createupdate"){
     $condominio = new condominio();
     $condominio->read($_GET[id]);
     $nome = $condominio->getNome();
-    $status = $condominio->getStatus();
+    $status = $condominio->getStatusBadge();
     $endereco = $condominio->getEndereco();
     $id = $condominio->getId();
     $qtd_apt = 0;
@@ -98,7 +98,7 @@ if($_POST['action']=="createupdate"){
                 "<a class='icone edit' href='?controller=blocos&action=edit&id=".
                 $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
                 "<a class='icone del' href='?controller=blocos&action=delete&id=".
-                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$bloco->getStatus()."</div>";
+                $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$bloco->getStatusBadge()."</div>";
                 
         }
     }
@@ -121,7 +121,7 @@ if($_POST['action']=="createupdate"){
             <tr><th scope="row">'.$apartamento->getId().'</th>
             <td>'.$apartamento->getNumero().'</td>
             <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
-            <td>'.$apartamento->getStatus().'</td>
+            <td>'.$apartamento->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
             $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -154,7 +154,7 @@ if($_POST['action']=="createupdate"){
         $usuario = $morador->getUsuario($morador->getId_usuario());
         $login_u = $usuario->getLogin();
         $tipo = $usuario->getTipo();
-        $status_usuario = $usuario->getStatusB();
+        $status_usuario = $usuario->getStatusBadge();
         $tb_co .= '</thead>
             <tbody>
             <tr><th scope="row">'.$morador->getId().'</th>
@@ -164,7 +164,7 @@ if($_POST['action']=="createupdate"){
             <td>'.$login_u.'</td>
             <td>'.$tipo.'</td>
             <td>'.$status_usuario.'</td>
-            <td>'.$morador->getStatus().'</td>
+            <td>'.$morador->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.
             $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -231,7 +231,7 @@ if(sizeof($condominios)){
             <tr><th scope="row">'.$condominio->getId().'</th>
             <td>'.$condominio->getNome().'</td>
             <td>'.$condominio->getEndereco().'</td>
-            <td>'.$condominio->getStatus().'</td>
+            <td>'.$condominio->getStatusBadge().'</td>
             <td><a class="icone view" href="?controller=condominios&action=view&id='.
             $condominio->getId().'"data-toggle="tooltip" data-placement="top" title="Detalhes"><i class="fas fa-eye"></i></a>
             <a class="icone edit" href="?controller=condominios&action=edit&id='.
@@ -254,7 +254,7 @@ if(sizeof($condominios)){
             "<a class='icone edit' href='?controller=condominios&action=edit&id=".
             $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=condominios&action=delete&id=".
-            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$condominio->getStatus()."</div>";
+            $condominio->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$condominio->getStatusBadge()."</div>";
             
     }
 }

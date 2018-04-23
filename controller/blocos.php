@@ -105,7 +105,7 @@ if(sizeof($blocos)){
             <tr><th scope="row">'.$bloco->getId().'</th>
             <td>'.$bloco->getNome().'</td>
             <td>'.$bloco->getNomeCondominio($bloco->getId_condominio()).'</td>
-            <td>'.$bloco->getStatus().'</td>
+            <td>'.$bloco->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=blocos&action=edit&id='.
             $bloco->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -126,7 +126,7 @@ if(sizeof($blocos)){
             "<a class='icone edit' href='?controller=blocos&action=edit&id=".
             $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=blocos&action=delete&id=".
-            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$bloco->getStatus()."</div>";
+            $bloco->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$bloco->getStatusBadge()."</div>";
             
     }
 }

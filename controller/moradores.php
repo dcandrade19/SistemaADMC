@@ -84,10 +84,21 @@ if($_POST[action]=="createupdate"){
     $usuarioEdicao = new usuario();
     $usuarioEdicao->read($moradorEdicao->getId_usuario());
     $login = $usuarioEdicao->getLogin();
-    $status = $usuarioEdicao->getStatus();
+    $usuario_status = $usuarioEdicao->getStatus();
     $senha = $usuarioEdicao->getSenha();
     $nivel = $usuarioEdicao->getNivel();
     $id_usuario = $usuarioEdicao->getId();
+    
+    $apartamento = new apartamento();
+    $apartamento->read($moradorEdicao->getId_apartamento());
+    $bloco = new bloco();
+    $bloco->read($apartamento->getId_bloco());
+    $condominio = new condominio();
+    $condominio->read($bloco->getId_condominio());
+    
+    $id_condominio = $bloco->getId_condominio();
+    $id_bloco = $bloco->getId();
+    $id_apartamento = $moradorEdicao->getId_apartamento();
     echo '<script>
         $(document).ready(function(){
         $("#modal_moradores").modal();
@@ -107,7 +118,7 @@ if($_POST[action]=="createupdate"){
         if ($morador) {
             $morador->read($morador->getId());
             $nome = $morador->getNome();
-            $status = $morador->getStatus();
+            $status = $morador->getStatusBadge();
             $cpf = $morador->getCpf();
             $apartamento = new apartamento();
             $apartamento->read($morador->getId_apartamento());
@@ -187,7 +198,7 @@ if(sizeof($moradores)){
         $usuario = $morador->getUsuario($morador->getId_usuario());
         $login_u = $usuario->getLogin();
         $tipo = $usuario->getTipo();
-        $status_usuario = $usuario->getStatusB();
+        $status_usuario = $usuario->getStatusBadge();
         $tb_content .= '</thead>
             <tbody>
             <tr><th scope="row">'.$morador->getId().'</th>
@@ -197,7 +208,7 @@ if(sizeof($moradores)){
             <td>'.$login_u.'</td>
             <td>'.$tipo.'</td>
             <td>'.$status_usuario.'</td>
-            <td>'.$morador->getStatus().'</td>
+            <td>'.$morador->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=moradores&action=edit&id='.
             $morador->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -220,7 +231,7 @@ if(sizeof($moradores)){
             "<a class='icone edit' href='?controller=moradores&action=edit&id=".
             $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=moradores&action=delete&id=".
-            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$tipo .'|'. $morador->getStatus()."</div>";
+            $morador->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$tipo .'|'. $morador->getStatusBadge()."</div>";
             
     }
 }

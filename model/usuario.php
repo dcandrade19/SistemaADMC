@@ -45,7 +45,7 @@ class usuario {
         return $this->status;
     }
     
-    function getStatusB(){
+    function getStatusBadge(){
         if($this->status){
             return '<span class="badge badge-success">Ativado</span>';
         }else{

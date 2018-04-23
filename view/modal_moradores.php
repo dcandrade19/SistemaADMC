@@ -16,14 +16,20 @@
 
     <div class="form-group col-md-6">
       <label for="campo2">CPF: </label>
-      <input type="text" class="form-control cpf"  id="cpfb" name="cpf" value="<?=$cpf?>" onchange="validarCPF(this.value)" required>
+      <input type="text" class="form-control cpf"  id="cpfb" name="cpf" value="<?=$cpf?>"  onchange="validarCPF(this.value)" required>
+      <div class="invalid-feedback">
+        Por favor informe um CPF valido!
+      </div>
+      <div class="valid-feedback">
+        CPF valido!
+      </div>
     </div>
 
     <div class="form-group col-md-2">
       <label for="campo2">Status: </label>
       <select class="custom-select" name="status" value="<?=$status?>">
-        <option value="1">Ativado</option>
-        <option value="0">Desativado</option>
+        <option value="1" <?php echo $status=='1'?'selected':'';?>>Ativado</option>
+        <option value="0" <?php echo $status=='0'?'selected':'';?>>Desativado</option>
       </select>
     </div>
     </div>
@@ -59,25 +65,26 @@
       <input type="text"  id="login" class="form-control" name="login" value="<?=$login?>" required>
     </div>
     
-    <div class="form-group col-md-4" data-toggle="tooltip" data-placement="bottom" title="Informe uma senha ou vazio para senha padrão.">
+    <div class="form-group col-md-3" data-toggle="tooltip" data-placement="bottom" title="Informe uma senha ou vazio para senha padrão.">
       <label for="senha">Senha: </label>
       <input type="password" class="form-control" name="senha" placeholder="*******" value="">
     </div>
     
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-3">
       <label for="nivel">Nivel: </label>
-      <select class="custom-select" name="nivel" value="<?=$nivel?>">
-        <option value="2">Morador</option>
-        <option value="1">Sindico</option>
-        <option value="0">Administrador</option>
+      <select class="custom-select" name="nivel" value="<?=$nivel?>" required>
+        <option value="" selected disabled hidden>Selecione</option>
+        <option value="2" <?php echo $nivel=='2'?'selected':'';?>>Morador</option>
+        <option value="1" <?php echo $nivel=='1'?'selected':'';?>>Sindico</option>
+        <option value="0" <?php echo $nivel=='0'?'selected':'';?>>Administrador</option>
       </select>
     </div>
     
     <div class="form-group col-md-2">
-      <label for="usuario_status">Status: </label>
+      <label for="usuario_status">Login: </label>
       <select class="custom-select" name="usuario_status" value="<?=$usuario_status?>">
-        <option value="1">Ativado</option>
-        <option value="0">Desativado</option>
+        <option value="1" <?php echo $usuario_status=='1'?'selected':'';?>>Ativado</option>
+        <option value="0" <?php echo $usuario_status=='0'?'selected':'';?>>Desativado</option>
       </select>
     </div>
     
@@ -97,7 +104,6 @@
   </div>
 </div>
 <script type="text/javascript">
-
 function validarCPF(cpf){ 
 	$.ajax({
         type: 'post',
@@ -107,8 +113,12 @@ function validarCPF(cpf){
         },
         success: function (response) {
         	if(!response){
-            	alert('CPF inválido!');
-            	document.getElementById("cpfb").value='';  
+            	document.getElementById("cpfb").value=''; 
+            	document.getElementById("cpfb").classList.remove("is-valid");
+            	document.getElementById("cpfb").classList.add("is-invalid");
+        	} else {
+        		document.getElementById("cpfb").classList.remove("is-invalid");
+        		document.getElementById("cpfb").classList.add("is-valid");
         	}
         }
     });
@@ -134,7 +144,7 @@ function fetch_select(val){
               id_condominio: val
              },
              success: function (response) {
-                document.getElementById("bloco").innerHTML=response;
+                document.getElementById("bloco").innerHTML=response; 
              }
          });
 }

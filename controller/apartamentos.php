@@ -50,6 +50,9 @@ if($_POST[action]=="createupdate"){
     $status = $apartamentoEdicao->getStatus();
     $id_bloco = $apartamentoEdicao->getId_bloco();
     $id = $apartamentoEdicao->getId();
+    $bloco = new bloco();
+    $bloco->read($id_bloco);
+    $id_condominio = $bloco->getId_condominio();
     echo '<script>
         $(document).ready(function(){
         $("#modal_apartamentos").modal();
@@ -105,7 +108,7 @@ if(sizeof($apartamentos)){
             <tr><th scope="row">'.$apartamento->getId().'</th>
             <td>'.$apartamento->getNumero().'</td>
             <td>'.$apartamento->getNomeBloco($apartamento->getId_bloco()).'</td>
-            <td>'.$apartamento->getStatus().'</td>
+            <td>'.$apartamento->getStatusBadge().'</td>
             <td>
             <a class="icone edit" href="?controller=apartamentos&action=edit&id='.
             $apartamento->getId().'"data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
@@ -126,7 +129,7 @@ if(sizeof($apartamentos)){
             "<a class='icone edit' href='?controller=apartamentos&action=edit&id=".
             $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Editar'><i class='fas fa-edit'></i></a>".
             "<a class='icone del' href='?controller=apartamentos&action=delete&id=".
-            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$apartamento->getStatus()."</div>";
+            $apartamento->getId()."'data-toggle='tooltip' data-placement='top' title='Deletar'><i class='fas fa-trash-alt'></i></a> </div></div>".$apartamento->getStatusBadge()."</div>";
             
     }
 }

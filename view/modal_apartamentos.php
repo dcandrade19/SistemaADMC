@@ -17,8 +17,8 @@
   <div class="form-group col-md-2">
         <label for="campo2">Status: </label>
         <select class="custom-select" name="status" value="<?=$status?>">
-          <option value="1">Ativado</option>
-          <option value="0">Desativado</option>
+          <option value="1" <?php echo $status=='1'?'selected':'';?>>Ativado</option>
+          <option value="0" <?php echo $status=='0'?'selected':'';?>>Desativado</option>
         </select>
       </div>
   </div>

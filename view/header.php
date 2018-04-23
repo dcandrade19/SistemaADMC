@@ -10,6 +10,8 @@
     <script src="<?php echo BASEURL; ?>_support/bootstrap/js/jquery.mask.min.js"></script>  
 	<link rel="stylesheet" href="<?php echo BASEURL;?>_support/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo BASEURL;?>css/style.css">
+	<link rel="icon" href="<?php echo BASEURL; ?>img/predio.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo BASEURL; ?>img/predio.ico" type="image/x-icon" />
     <title>Sistema ADMC</title>
 </head>
 <body>

@@ -11,28 +11,19 @@ if(!empty($_POST['login'])){
 		            $logged = 1;
 		            header('Location: ' .BASEURL);
 		        } else {
-		            $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
-    Usuario desativado!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		            $resu = '<div class="invalid-tooltip">
+                    Usuário desativado!
+                    </div>';   
 		        } 
 		    } else {
-		        $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
-    Senha errada!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		        $res = '<div class="invalid-tooltip">
+                    Senha errada!
+                    </div>';  
 		    }
-		} else {
-		    $res = '<div class="alert alert-secondary entrar-div alert-dismissible fade show" role="alert">
-    Usuario não encontrado!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		} else {    
+		    $resu = '<div class="invalid-tooltip">
+                    Usuário não encontrado!
+                    </div>';
 		}
 		}
 		

@@ -14,8 +14,9 @@ include_once "../model/morador.php";
         $id_bloco = $_POST['id_bloco'];
         echo morador::doSelectApartamento($id_bloco);
     }
+
     
-   if(isset($_POST['cpf'])){
+    if(isset($_POST['cpf'])){
         $cpf = $_POST['cpf'];
         echo validaCPF($cpf);
     }

@@ -41,6 +41,10 @@ class condominio {
     }
     
     function getStatus(){
+        return $this->status;
+    }
+    
+    function getStatusBadge(){
         if($this->status){
             return '<span class="badge badge-success">Ativado</span>';
         }else{
